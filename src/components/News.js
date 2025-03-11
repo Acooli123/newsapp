@@ -29,7 +29,7 @@ export class News extends Component {
       page: 1,
       totalResults: 0,
     };
-    document.title = `${this.capitalizeFirstLetter(this.props.category)} - NewsMonkey`;
+    document.title = `${this.capitalizeFirstLetter(this.props.category)} - News 24x7`;
   }
 
   async updateNews() {
@@ -78,8 +78,8 @@ export class News extends Component {
     try {
       this.setState({ page: this.state.page + 1 });
 
-      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
-      console.log(`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`)
+      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+      
       let response = await fetch(url);
       let parsedData = await response.json();
 
@@ -101,7 +101,7 @@ export class News extends Component {
     return (
       <>
         <h1 className="text-center" style={{ margin: "35px 0px" }}>
-          NewsMonkey - Top {this.capitalizeFirstLetter(this.props.category)} Headlines
+          News 24x7 - Top {this.capitalizeFirstLetter(this.props.category)} Headlines
         </h1>
 
         {this.state.loading && <Spinner />}
