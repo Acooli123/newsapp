@@ -27,10 +27,11 @@ const News = ({ country = "us", pageSize = 8, category = "general", setProgress 
     }
     try {
       setLoading(true);
-      if (setProgress) setProgress(0);
+      if (setProgress) setProgress(10);
       const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}&page=${page}&pageSize=${pageSize}`;
       const response = await fetch(url);
       const parsedData = await response.json();
+      if (setProgress) setProgress(70);
 
       if (parsedData.status === "error") {
         console.error(`🚨 News API Error: ${parsedData.message}`);
